@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8faf7">
+  <meta name="description" content="ChatBloom 陪你用英语聊日常，在自然交流中找到更好的表达。">
+  <title>ChatBloom · 聊点日常，表达更自然</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+<div class="app-shell">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="sidebar" id="sidebar" aria-label="对话导航">
+    <a class="brand" href="/" aria-label="ChatBloom 首页"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 24V13M14 17C6 17 4 12 4 6c7 0 11 3 10 11ZM14 13c-1-7 4-10 10-10 0 6-3 10-10 10Z"/></svg><span>ChatBloom</span></a>
+    <button class="button new-chat" id="new-chat" type="button"><span aria-hidden="true">＋</span> 新对话</button>
+    <div class="history-heading"><h2>最近的对话</h2><span id="history-count"></span></div>
+    <nav class="history-list" id="history-list" aria-label="已保存对话"></nav>
+    <footer class="sidebar-footer"><p class="brand-motto">聊点日常，<br>表达更自然。</p><p>本机保留最近 12 段对话</p></footer>
+  </aside>
+  <main class="chat-main">
+    <header class="chat-header">
+      <div class="header-start"><button class="icon-button mobile-menu" id="menu-button" type="button" aria-label="打开对话导航" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><div><h1>日常英语</h1><p>自由聊天 · 口语表达</p></div></div>
+      <div class="mode-control"><span class="mode-indicator" id="mode-label" role="status">正在准备</span><button class="text-button" id="mode-button" type="button" hidden>体验示例</button></div>
+    </header>
+    <div class="demo-notice" id="demo-notice" hidden><span class="demo-symbol" aria-hidden="true">✧</span><p>当前为示例体验，回复和提示均为预设内容。</p></div>
+    <div class="privacy-note" id="privacy-note" hidden><p>发送后，当前对话的近期内容会交由 DeepSeek 生成回复。</p><button type="button" class="text-button" id="dismiss-privacy" aria-label="关闭数据使用提示">知道了</button></div>
+    <div class="chat-scroll" id="chat-scroll">
+      <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-sprout" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M14 24V13M14 17C6 17 4 12 4 6c7 0 11 3 10 11ZM14 13c-1-7 4-10 10-10 0 6-3 10-10 10Z"/></svg></div>
+        <p class="eyebrow">A LITTLE CHAT, A LITTLE GROWTH</p>
+        <h2 id="welcome-title">今天，想聊点什么？</h2>
+        <p class="welcome-description">从一件小事开始，英语不用很完美。<br>我会认真接话，也帮你找到更自然的表达。</p>
+        <p class="welcome-english" lang="en">Tell me one small thing about your day.</p>
+      </section>
+      <div class="messages" id="messages" role="log" aria-live="polite" aria-label="聊天记录" aria-relevant="additions"></div>
+    </div>
+    <section class="composer-section" aria-label="发送消息">
+      <div class="topic-row" id="topic-row" aria-label="从一个话题开始">
+        <button class="topic-button" type="button" data-topic="work"><span aria-hidden="true">☀</span> 工作与生活</button>
+        <button class="topic-button" type="button" data-topic="weekend"><span aria-hidden="true">⌂</span> 周末计划</button>
+        <button class="topic-button" type="button" data-topic="movies"><span aria-hidden="true">▷</span> 最近的电影</button>
+      </div>
+      <div class="error-banner" id="error-banner" role="alert" hidden><p id="error-text"></p><button type="button" class="text-button" id="retry-button">重试</button></div>
+      <form class="composer" id="chat-form">
+        <label class="sr-only" for="message-input">用英语分享你想聊的内容</label>
+        <textarea id="message-input" rows="2" maxlength="2000" placeholder="用英语分享一件小事…" aria-describedby="composer-hint"></textarea>
+        <div class="composer-actions"><span class="input-counter" id="input-counter"></span><button class="send-button" id="send-button" type="submit" aria-label="发送消息" disabled><span id="send-label">发送</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button><button class="stop-button" id="stop-button" type="button" hidden>停止回复</button></div>
+      </form>
+      <div class="composer-footer"><p id="composer-hint">Enter 发送 · Shift + Enter 换行</p><span>每轮最多一条表达小提示</span></div>
+      <p class="storage-warning" id="storage-warning" role="status" hidden>浏览器暂时无法保存记录，本次对话仍可继续。</p>
+    </section>
+  </main>
+</div>
+<noscript><p>请启用 JavaScript 以使用 ChatBloom。</p></noscript>
+</body>
+</html>
